@@ -86,15 +86,9 @@ int main(){
 	char choice;
 
 	system("cls");
- 	printf("\t\t=============================================\n");
-	printf("\t\t|                                           |\n");
 	printf("\t\t|       ----------------------------        |\n");
-	printf("\t\t|         OTEL REZERVASYON SISTEMI            |\n");
+	printf("\t\t|         OTEL REZERVASYON SISTEMI          |\n");
 	printf("\t\t|       ----------------------------        |\n");
-	printf("\t\t|                                           |\n");
-	printf("\t\t|                                           |\n");
-	printf("\t\t|                                           |\n");
-	printf("\t\t=============================================\n\n\n");
 		for(i=0;i<80;i++)
 		printf("-");
 	    printf("\n TARIH VE SAAT : %s",ctime(&t));
