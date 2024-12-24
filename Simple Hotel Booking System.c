@@ -25,9 +25,9 @@ void login()
 	system("cls");
 
     printf("\n  =============  LOGIN FORM  =============  ");
-    printf(" \n        ENTER USERNAME:-");
+    printf(" \n        KULLANICI ADI:-");
 	scanf("%s", &uname);
-	printf(" \n        ENTER PASSWORD:-");
+	printf(" \n        SIFRE:-");
 	while(i<10)
 	{
 	    pword[i]=getch();
@@ -42,13 +42,13 @@ void login()
 
 		if(strcmp(uname,user)==0 && strcmp(pword,pass)==0)
 	{
-	printf("  \n\n\n       WELCOME !!!! LOGIN IS SUCCESSFUL");
+	printf("  \n\n\n       GIRIS BASARILI!!!");
 
 	break;
 	}
 	else
 	{
-		printf("\n        SORRY !!!!  LOGIN IS UNSUCESSFUL");
+		printf("\n        GIRIS BASARISIZ!!!");
 		a++;
 
 		getch();
@@ -58,7 +58,7 @@ void login()
 	while(a<=2);
 	if (a>2)
 	{
-		printf("\nSorry you have entered the wrong username and password for four times!!!");
+		printf("\n ARD ARDA YANLIS SIFRE GIRDINIZ!!!");
 
 		getch();
 
@@ -66,13 +66,12 @@ void login()
 		system("cls");
 }
 
-struct CustomerDetails   //STRUCTURE DECLARATION
+struct CustomerDetails   //STRUCT VERI YAPILARI
 {
 	char roomnumber[10];
 	char name[20];
 	char address[25];
 	char phonenumber[15];
-	char nationality[15];
 	char email[20];
 	char period[10];
 	char arrivaldate[10];
@@ -90,7 +89,7 @@ int main(){
  	printf("\t\t=============================================\n");
 	printf("\t\t|                                           |\n");
 	printf("\t\t|       ----------------------------        |\n");
-	printf("\t\t|           HOTEL BOOKING SYSTEM            |\n");
+	printf("\t\t|         OTEL REZERVASYON SISTEMI            |\n");
 	printf("\t\t|       ----------------------------        |\n");
 	printf("\t\t|                                           |\n");
 	printf("\t\t|                                           |\n");
@@ -98,10 +97,10 @@ int main(){
 	printf("\t\t=============================================\n\n\n");
 		for(i=0;i<80;i++)
 		printf("-");
-	    printf("\nDate and Time : %s",ctime(&t));
+	    printf("\n TARIH VE SAAT : %s",ctime(&t));
 	    for(i=0;i<80;i++)
 		printf("-");
-	printf(" \n Press any key to continue:");
+	printf(" \n Devam etmek icin herhangi bir tusa basiniz:");
 
 	getch();
     system("cls");
@@ -114,22 +113,22 @@ int main(){
         for(i=0;i<80;i++)
 		printf("-");
 		printf("\n");
-		printf("\t\t\t|MAIN MENU|  \n");
+		printf("\t\t\t|ANA MENU|  \n");
 		for(i=0;i<80;i++)
 		printf("-");
 		printf("\n");
-		printf("\t\t Select an option:");
+		printf("\t\t ISLEM SECINIZ:");
 		printf("\n\n");
-		printf(" \n 1 Book a room");
-		printf(" \n 2 View Customer Detail");
-		printf(" \n 3 Delete Customer Detail");
-		printf(" \n 4 Search Record");
-		printf(" \n 5 Update Record");
-		printf(" \n 6 Exit");
+		printf(" \n 1 Oda Rezervi");
+		printf(" \n 2 Musteri Detayi");
+		printf(" \n 3 Musteri Silme");
+		printf(" \n 4 Kayit Sorusturma");
+		printf(" \n 5 Kayit Guncelleme");
+		printf(" \n 6 Cikis");
 		printf("\n");
 		for(i=0;i<80;i++)
 		printf("-");
-	    printf("\nDate and Time : %s",ctime(&t));
+	    printf("\n Tarih : %s",ctime(&t));
 	    for(i=0;i<80;i++)
 		printf("-");
 
@@ -149,15 +148,15 @@ int main(){
 				edit();break;
 			case '6':
 				system("cls");
-				printf("\n\n\t *****THANK YOU*****");
-				printf("\n\t FOR TRUSTING OUR SERVICE");
+				printf("\n\n\t BIZI TERCIH ETTIGINIZ ICIN");
+				printf("\n\t ******TESEKKURLER******");
 			//	Sleep(2000);
 				exit(0);
 				break;
 			default:
 				system("cls");
-				printf("Incorrect Input");
-				printf("\n Press any key to continue");
+				printf("Hatali Giris");
+				printf("\n Devam etmek icin bir tusa basiniz");
 				getch();
 		}
 	}
@@ -171,35 +170,33 @@ void add()
 	if(f==0)
 	{   f=fopen("cus.txt","w+");
 		system("cls");
-		printf("\n Process completed press any key to continue!! ");
+		printf("\n Islem basarili devam etmek icin bir tusa basiniz!! ");
 		getch();
 	}
 	while(1)
 	{
 		system("cls");
-		printf("\n Enter Customer Details:");
+		printf("\n Musteri Bilgisi Giriniz:");
 		printf("\n**************************");
-		printf("\n Enter Room number:\n");
+		printf("\n Oda Numarasi:\n");
 		scanf("\n%s",s.roomnumber);
 		fflush(stdin);
-		printf("Enter Name:\n");
+		printf("Ad:\n");
 		scanf("%s",s.name);
-		printf("Enter Address:\n");
+		printf("Adres Giriniz:\n");
 		scanf("%s",s.address);
-		printf("Enter Phone Number:\n");
+		printf("Telefon Numarasi Giriniz:\n");
 		scanf("%s",s.phonenumber);
-		printf("Enter Nationality:\n");
-		scanf("%s",s.nationality);
-		printf("Enter Email:\n");
+		printf("Email:\n");
 		scanf(" %s",s.email);
-		printf("Enter Period(\'x\'days):\n");
+		printf("Rezervasyon Suresi(\'x\'Gun):\n");
 		scanf("%s",&s.period);
-		printf("Enter Arrival date(dd\\mm\\yyyy):\n");
+		printf("Giris Tarihi(gg\\ay\\yyyy):\n");
 		scanf("%s",&s.arrivaldate);
 		fwrite(&s,sizeof(s),1,f);
 		fflush(stdin);
-		printf("\n\n1 Room is successfully booked!!");
-		printf("\n Press esc key to exit,  any other key to add another customer detail:");
+		printf("\n\n1 Oda Basariyla Rezerve Edildi!!");
+		printf("\n Cikmak icin esc tusuna basiniz,  yeni musteri bilgizsi icin herhangi bir tusa basiniz:");
 		test=getche();
 		if(test==27)
 			break;
@@ -215,21 +212,20 @@ void list()
 	if((f=fopen("cus.txt","r"))==NULL)
 		exit(0);
 	system("cls");
-	printf("ROOM    ");
-	printf("NAME\t ");
-	printf("\tADDRESS ");
-	printf("\tPHONENUMBER ");
-	printf("\tNATIONALITY ");
+	printf("ODA    ");
+	printf("ISIM\t ");
+	printf("\tADDRES ");
+	printf("\tTELEFON NUMARASI ");
 	printf("\tEMAIL ");
-	printf("\t\t  PERIOD ");
-	printf("\t ARRIVALDATE \n");
+	printf("\t\t  SURE ");
+	printf("\t GIRIS TARIHI \n");
 
 	for(i=0;i<118;i++)
 		printf("-");
 	while(fread(&s,sizeof(s),1,f)==1)
 	{
 
-		printf("\n%s \t%s \t\t%s \t\t%s \t%s  \t%s  \t     %s  \t  %s",s.roomnumber, s.name , s.address , s.phonenumber ,s.nationality ,s.email,s.period,  s.arrivaldate);
+		printf("\n%s \t%s \t\t%s \t\t%s \t%s  \t%s  \t     %s  \t  %s",s.roomnumber, s.name , s.address , s.phonenumber ,s.email,s.period,  s.arrivaldate);
 	}
 	printf("\n");
 	for(i=0;i<118;i++)
@@ -249,7 +245,7 @@ void delete1()
 	if((f=fopen("cus.txt","r"))==NULL)
 	exit(0);
 	system("cls");
-	printf("Enter the Room Number of the hotel to be deleted from the database: \n");
+	printf("Sistemden Musteri Silmek Icin Oda Numarasi Giriniz: \n");
 	fflush(stdin);
 	scanf("%s",roomnumber);
 	while(fread(&s,sizeof(s),1,f)==1)
@@ -263,7 +259,7 @@ void delete1()
 	}
 	if(i==1)
 	{
-		printf("\n\n Records of Customer in this  Room number is not found!!");
+		printf("\n\n Odaya ait musteri girisi bulunamadi!!");
 
 		getch();
 		fclose(f);
@@ -274,7 +270,7 @@ void delete1()
 	fclose(t);
 	remove("cus.txt");
 	rename("temp.txt","cus.txt");
-	printf("\n\nThe Customer is successfully removed....");
+	printf("\n\nMusteri bilgisi basariyla silindi....");
 	fclose(f);
 	fclose(t);
 	getch();
@@ -290,27 +286,26 @@ system("cls");
 	if(f==0)
 		exit(0);
 	fflush(stdin);
-	printf("Enter Room number of the customer to search its details: \n");
+	printf("Musteri Bilgisi Görmek İcin Oda Numarasi Giriniz: \n");
 	scanf("%s", roomnumber);
 	while(fread(&s,sizeof(s),1,f)==1)
 	{
 		if(strcmp(s.roomnumber,roomnumber)==0){
 			flag=0;
-			printf("\n\tRecord Found\n ");
-			printf("\nRoom Number:\t%s",s.roomnumber);
-			printf("\nName:\t%s",s.name);
-			printf("\nAddress:\t%s",s.address);
-			printf("\nPhone number:\t%s",s.phonenumber);
-			printf("\nNationality:\t%s",s.nationality);
+			printf("\n\tKayit Bulundu\n ");
+			printf("\nOda Numarası:\t%s",s.roomnumber);
+			printf("\nIsim:\t%s",s.name);
+			printf("\nAddres:\t%s",s.address);
+			printf("\nTelefon Numarası:\t%s",s.phonenumber);
 			printf("\nEmail:\t%s",s.email);
-			printf("\nPeriod:\t%s",s.period);
-			printf("\nArrival date:\t%s",s.arrivaldate);
+			printf("\nSure:\t%s",s.period);
+			printf("\nGiris Tarihi:\t%s",s.arrivaldate);
 			flag=0;
 			break;
 		}
 	}
 	if(flag==1){
-		printf("\n\tRequested Customer could not be found!");
+		printf("\n\tIstenilen Kullanici Bulunamadi!");
 	}
 	getch();
 	fclose(f);
@@ -325,7 +320,7 @@ void edit()
 	if((f=fopen("cus.txt","r+"))==NULL)
 		exit(0);
 	system("cls");
-	printf("Enter Room number of the customer to edit:\n\n");
+	printf("Musteri Bilgisi Duzenlemek Icin Oda Numarasi Giriniz:\n\n");
 	scanf("%[^\n]",roomnumber);
 	fflush(stdin);
 	while(fread(&s,sizeof(s),1,f)==1)
@@ -333,22 +328,20 @@ void edit()
 		if(strcmp(s.roomnumber,roomnumber)==0)
 		{
 			k=0;
-			printf("\nEnter Room Number     :");
+			printf("\nOda Numarasi Giriniz     :");
 			gets(s.roomnumber);
-			printf("\nEnter Name    :");
+			printf("\nIsim Giriniz    :");
 			fflush(stdin);
 			scanf("%s",&s.name);
-			printf("\nEnter Address        :");
+			printf("\nAdres Giriniz        :");
 			scanf("%s",&s.address);
-			printf("\nEnter Phone number :");
+			printf("\nTelefon Numarasi Giriniz :");
 			scanf("%f",&s.phonenumber);
-			printf("\nEnter Nationality :");
-			scanf("%s",&s.nationality);
-			printf("\nEnter Email :");
+			printf("\nEmail Giriniz :");
 			scanf("%s",&s.email);
-			printf("\nEnter Period :");
+			printf("\nSure Giriniz :");
 			scanf("%s",&s.period);
-			printf("\nEnter Arrival date :");
+			printf("\nGiris Tarihi Giriniz :");
 			scanf("%s",&s.arrivaldate);
 			fseek(f,size,SEEK_CUR);
 			fwrite(&s,sizeof(s),1,f);
@@ -356,12 +349,12 @@ void edit()
 		}
 	}
 	if(k==1){
-		printf("\n\nTHE RECORD DOESN'T EXIST!!!!");
+		printf("\n\nBOYLE BIR KAYIT BULUNMAMAKTADIR!!!!");
 		fclose(f);
 		getch();
 	}else{
 	fclose(f);
-	printf("\n\n\t\tYOUR RECORD IS SUCCESSFULLY EDITED!!!");
+	printf("\n\n\t\tKAYIT BASARIYLA DUZENLENDI!!!");
 	getch();
 }
 }
